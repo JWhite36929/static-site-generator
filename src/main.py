@@ -1,13 +1,9 @@
-from textnode import TextNode 
-from textnode import TextType
+from textnode import TextNode, TextType
+
 
 def main():
-    example1 = TextNode("Hello", TextType.BOLD, "https://omarchy.org")
-    example2 = TextNode("oops", TextType.ITALIC)
-
-    print(example2)
-    print(example1)
+    node = TextNode("This is a text node", TextType.BOLD, "https://www.boot.dev")
+    print(node)
 
 
-if __name__ == "__main__":
-    main()
+main()
