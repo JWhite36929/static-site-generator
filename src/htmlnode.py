@@ -1,4 +1,4 @@
-
+from textnode import TextType 
 
 class HTMLNode:
 
@@ -49,15 +49,15 @@ class ParentNode(HTMLNode):
     def __init__(self, tag, children, props=None):
         super().__init__(tag, None, children, props)
 
-    def to_html(self):
+    def to_html(self): 
         if not self.tag:
             raise ValueError("Tag is required")
-
+    
         if not self.children:
             raise ValueError("Children parameter is required")
         
         children_html = ""
-        #recursive method to convert all children to html then nest within parent elements
+        #recursion to convert all children to html then nest within parent elements
         for child in self.children:
             children_html += child.to_html()
         return f"<{self.tag}{self.props_to_html()}>{children_html}</{self.tag}>"
