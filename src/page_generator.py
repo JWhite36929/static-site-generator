@@ -2,18 +2,6 @@ import os
 import shutil
 from block_markdown import markdown_to_html_node
 
-def copy_files_from_to(src, dst="public"):
-    """
-    Copy all files from the 'static' directory to the newly created 'public' directory.
-    """
-
-    if os.path.exists(dst):
-        shutil.rmtree(dst)
-
-    shutil.copytree(src, dst)
-
-    print(f"Copied all files from {src} to {dst}")
-
 def extract_title(markdown):
     """
     Extract the title from the markdown content.
@@ -26,7 +14,7 @@ def extract_title(markdown):
             return line[2:].strip()
     raise ValueError("No title found in markdown content.")
 
-def generate_page(from_path, template_path, dest_path):
+def generate_page(from_path, template_path, dest_path, base_path):
     """
     Generate a page by reading markdown from 'from_path', applying the template from 'template_path',
     and writing the result to 'dest_path'.
@@ -42,7 +30,10 @@ def generate_page(from_path, template_path, dest_path):
     markdown_html_string = markdown_to_html_node(markdown_content).to_html()
     page_title = extract_title(markdown_content)
 
-    final_content = template_content.replace("{{ Title }}", page_title).replace("{{ Content }}", markdown_html_string)
+    final_content = template_content.replace("{{ Title }}", page_title)
+    final_content = final_content.replace("{{ Content }}", markdown_html_string)
+    final_content = final_content.replace('href="/', f'href="{base_path}/')
+    final_content = final_content.replace('src="/', f'src="{base_path}/')
 
     os.makedirs(os.path.dirname(dest_path), exist_ok=True)
     
@@ -50,7 +41,7 @@ def generate_page(from_path, template_path, dest_path):
         f.write(final_content)
     print(f"Page generated at {dest_path}")
 
-def generate_pages_recursive(dir_path_content, template_path, dest_dir_path):
+def generate_pages_recursive(dir_path_content, template_path, dest_dir_path, base_path):
     """
     Recursively generate pages for all markdown files in 'dir_path_content' using the template at 'template_path',
     and write them to 'dest_dir_path', preserving the directory structure.
@@ -61,4 +52,4 @@ def generate_pages_recursive(dir_path_content, template_path, dest_dir_path):
                 relative_path = os.path.relpath(root, dir_path_content)
                 from_path = os.path.join(root, file)
                 dest_path = os.path.join(dest_dir_path, relative_path, file.replace('.md', '.html'))
-                generate_page(from_path, template_path, dest_path)
+                generate_page(from_path, template_path, dest_path, base_path)
