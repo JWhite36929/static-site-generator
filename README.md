@@ -10,7 +10,7 @@ The html template is in the root of the project.
 To generate pages paste markdown files into the content folder. 
 This should follow the structure of the site. 
 
-## Example
+## Content Structure Example
 ```
 content/blog/post/index.md 
 content/blog/post2/index.md 
