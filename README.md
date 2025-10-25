@@ -10,7 +10,7 @@ The html template is in the root of the project.
 To generate pages paste markdown files into the content folder. 
 This should follow the structure of the site. 
 
-## Content Structure Example
+### Content Structure Example
 ```
 content/blog/post/index.md 
 content/blog/post2/index.md 
@@ -23,5 +23,8 @@ GitHub Pages will read the changes and automatically deploy the site to https://
 
 To host locally for debugging run the main.sh script instead. 
 
+## Future Use
+I will beging to utilize this project to convert my Obsidian markdown notes into webpage blogs as I find more topics I enjoy writing about. 
 
+## Additional Notes
 This project was created following alongside boot.dev's course. All current assets and page content came from the course author. Personally I have not read Tolkien yet.
