@@ -2,6 +2,17 @@ import os
 import shutil
 from block_markdown import markdown_to_html_node
 
+def copy_files_from_to(src, dst="docs"):
+    """
+    Copy all files from the 'static' directory to the newly created 'public' directory.
+
+    """
+    if os.path.exists(dst):
+        shutil.rmtree(dst)
+
+    shutil.copytree(src, dst)
+    print(f"Copied all files from {src} to {dst}")
+
 def extract_title(markdown):
     """
     Extract the title from the markdown content.
