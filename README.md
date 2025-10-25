@@ -11,9 +11,11 @@ To generate pages paste markdown files into the content folder.
 This should follow the structure of the site. 
 
 ## Example
-content/blog/post/index.md
-content/blog/post2/index.md
-content/contact/index.md
+```
+content/blog/post/index.md 
+content/blog/post2/index.md 
+content/contact/index.md 
+```
 
 Then run the build.sh script to generate the static site from the new content. 
 Once the content has been generated push the changes to Github. 
@@ -22,4 +24,4 @@ GitHub Pages will read the changes and automatically deploy the site to https://
 To host locally for debugging run the main.sh script instead. 
 
 
-This project was created following alongside boot.dev's course. All current assets and page content came from the course author.
+This project was created following alongside boot.dev's course. All current assets and page content came from the course author. Personally I have not read Tolkien yet.
