@@ -22,4 +22,4 @@ GitHub Pages will read the changes and automatically deploy the site to https://
 To host locally for debugging run the main.sh script instead. 
 
 
-This project was created following alongside boot.dev's course. 
+This project was created following alongside boot.dev's course. All current assets and page content came from the course author.
